@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../constants/button_color.dart';
 import '../constants/button_size.dart';
@@ -10,8 +8,8 @@ class OrnageButton extends StatefulWidget {
   final void Function()? onPressed;
   final Icon icon;
   final Icon activeIcon;
-  final bool isClick;
-  const OrnageButton(
+  bool? isClick;
+  OrnageButton(
       {super.key,
       this.onPressed,
       required this.icon,
@@ -25,7 +23,7 @@ class OrnageButton extends StatefulWidget {
 class _OrnageButtonState extends State<OrnageButton> {
   void _toggle() {
     setState(() {
-      widget.isClick != widget.isClick;
+      widget.isClick = !widget.isClick!;
     });
   }
 
@@ -41,8 +39,8 @@ class _OrnageButtonState extends State<OrnageButton> {
 
   Widget _forward() {
     return AnimatedOpacity(
-      opacity: (widget.isClick) ? 1.0 : 0.0,
-      duration: const Duration(seconds: 1),
+      opacity: (!widget.isClick!) ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 300),
       child: SizedBox(
         width: ButtonSize.short,
         height: ButtonSize.short,

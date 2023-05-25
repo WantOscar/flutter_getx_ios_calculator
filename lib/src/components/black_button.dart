@@ -8,7 +8,7 @@ enum Type { ROUND, FLAT }
 class BlackButton extends StatelessWidget {
   final void Function()? onPressed;
   final Type type;
-  final String child;
+  final Widget child;
   const BlackButton(
       {super.key,
       required this.onPressed,
@@ -34,10 +34,7 @@ class BlackButton extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         color: ButtonColor.black,
         onPressed: () {},
-        child: Text(
-          child,
-          style: const TextStyle(color: Colors.white, fontSize: 40),
-        ),
+        child: child,
       ),
     );
   }
@@ -51,10 +48,7 @@ class BlackButton extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         color: ButtonColor.black,
         onPressed: () {},
-        child: Text(
-          child,
-          style: const TextStyle(color: Colors.white, fontSize: 40),
-        ),
+        child: child,
       ),
     );
   }
