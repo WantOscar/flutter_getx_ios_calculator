@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_ios_calculator/src/components/black_button.dart';
+import 'package:flutter_getx_ios_calculator/src/components/equal_button.dart';
 import 'package:flutter_getx_ios_calculator/src/components/grey_button.dart';
 import 'package:flutter_getx_ios_calculator/src/components/orange_button.dart';
 import 'package:flutter_getx_ios_calculator/src/constants/button_color.dart';
+import 'package:flutter_getx_ios_calculator/src/constants/button_icon_type.dart';
+import 'package:get/get.dart';
 
-class App extends StatelessWidget {
+import '../controller/calculator_controller.dart';
+
+class App extends GetView<CalculatorController> {
   const App({super.key});
 
   @override
@@ -57,37 +62,20 @@ class App extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GreyButton(
+          type: GreyBtnType.ALLCLEAR,
           onPressed: () {},
-          child: const Text(
-            'AC',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 35,
-            ),
-          ),
+          child: child,
         ),
         GreyButton(
+          type: GreyBtnType.PLUSNMINUS,
           onPressed: () {},
-          child: const Icon(CupertinoIcons.plus_slash_minus,
-              color: Colors.black, size: 35),
+          child: child,
         ),
-        GreyButton(
+        OrangeButton(
+          isClicked: false,
+          iconFront: ButtonIconType.divide,
+          iconBack: ButtonIconType.divideReverse,
           onPressed: () {},
-          child:
-              const Icon(CupertinoIcons.percent, color: Colors.black, size: 35),
-        ),
-        OrnageButton(
-          isClick: false,
-          icon: Icon(
-            CupertinoIcons.divide,
-            color: ButtonColor.white,
-            size: 35,
-          ),
-          activeIcon: Icon(
-            CupertinoIcons.divide,
-            color: ButtonColor.orange,
-            size: 35,
-          ),
         ),
       ],
     );
@@ -98,42 +86,22 @@ class App extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '7',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.SEVEN,
+          onPressed: () => controller.pushNumberBtn('7'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '8',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.EIGHT,
+          onPressed: () => controller.pushNumberBtn('8'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '9',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.NINE,
+          onPressed: () => controller.pushNumberBtn('9'),
         ),
-        OrnageButton(
-          isClick: false,
+        OrangeButton(
+          isClicked: false,
+          iconFront: ButtonIconType.multiply,
+          iconBack: ButtonIconType.multiplyReverse,
           onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.multiply,
-            color: ButtonColor.white,
-            size: 35,
-          ),
-          activeIcon: Icon(
-            CupertinoIcons.multiply,
-            color: ButtonColor.orange,
-            size: 35,
-          ),
         ),
       ],
     );
@@ -144,42 +112,22 @@ class App extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '4',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.FOUR,
+          onPressed: () => controller.pushNumberBtn('4'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '5',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.FIVE,
+          onPressed: () => controller.pushNumberBtn('5'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '6',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.SIX,
+          onPressed: () => controller.pushNumberBtn('6'),
         ),
-        OrnageButton(
-          isClick: false,
+        OrangeButton(
+          isClicked: false,
+          iconFront: ButtonIconType.minus,
+          iconBack: ButtonIconType.minusReverse,
           onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.minus,
-            color: ButtonColor.white,
-            size: 35,
-          ),
-          activeIcon: Icon(
-            CupertinoIcons.minus,
-            color: ButtonColor.orange,
-            size: 35,
-          ),
         ),
       ],
     );
@@ -190,42 +138,22 @@ class App extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '1',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.ONE,
+          onPressed: () => controller.pushNumberBtn('1'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '2',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.TWO,
+          onPressed: () => controller.pushNumberBtn('2'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '3',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.THREE,
+          onPressed: () => controller.pushNumberBtn('3'),
         ),
-        OrnageButton(
-          isClick: false,
+        OrangeButton(
+          isClicked: false,
+          iconFront: ButtonIconType.plus,
+          iconBack: ButtonIconType.plusReverse,
           onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.plus,
-            color: ButtonColor.white,
-            size: 35,
-          ),
-          activeIcon: Icon(
-            CupertinoIcons.plus,
-            color: ButtonColor.orange,
-            size: 35,
-          ),
         ),
       ],
     );
@@ -236,44 +164,17 @@ class App extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         BlackButton(
-          onPressed: () {},
-          type: Type.FLAT,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text(
-                  '0',
-                  style: TextStyle(fontSize: 35),
-                ),
-              ],
-            ),
-          ),
+          type: BlackBtnType.ZERO,
+          onPressed: () => controller.pushNumberBtn('0'),
         ),
         BlackButton(
-          onPressed: () {},
-          type: Type.ROUND,
-          child: const Text(
-            '.',
-            style: TextStyle(fontSize: 35),
-          ),
+          type: BlackBtnType.DOT,
+          onPressed: controller.pushDotBtn,
         ),
-        OrnageButton(
-          isClick: false,
+        EqualButton(
+          iconFront: ButtonIconType.equal,
+          isClicked: false,
           onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.equal,
-            color: ButtonColor.white,
-            size: 35,
-          ),
-          activeIcon: Icon(
-            CupertinoIcons.equal,
-            color: ButtonColor.orange,
-            size: 35,
-          ),
         ),
       ],
     );

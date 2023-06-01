@@ -1,26 +1,59 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_getx_ios_calculator/src/components/basic_button.dart';
+import 'package:flutter_getx_ios_calculator/src/constants/button_icon_type.dart';
+import 'package:get/get.dart';
 
 import '../constants/button_color.dart';
 import '../constants/button_size.dart';
+import '../controller/calculator_controller.dart';
 
-class GreyButton extends StatelessWidget {
-  final void Function()? onPressed;
+enum GreyBtnType { ALLCLEAR, PLUSNMINUS, PERCENT }
+
+class GreyButton extends GetView<CalculatorController> {
+  final GreyBtnType type;
+  final Function() onPressed;
   final Widget child;
-  const GreyButton({super.key, this.onPressed, required this.child});
+  const GreyButton(
+      {super.key,
+      required this.onPressed,
+      required this.child,
+      required this.type});
 
   @override
   Widget build(BuildContext context) {
+    switch (type) {
+      case GreyBtnType.ALLCLEAR:
+        return _btnAllClear();
+      case GreyBtnType.PLUSNMINUS:
+        return _btnETC(ButtonIconType.plusAndMinus);
+      case GreyBtnType.PERCENT:
+        return _btnETC(ButtonIconType.percent);
+    }
+  }
+
+  Widget _btnAllClear() {
     return SizedBox(
       width: ButtonSize.short,
       height: ButtonSize.short,
-      child: CupertinoButton(
-        borderRadius: BorderRadius.circular(100),
-        padding: const EdgeInsets.all(16.0),
-        color: ButtonColor.grey,
-        onPressed: onPressed,
-        child: child,
+      child: Obx(
+        () => CupertinoButton(
+          color: ButtonColor.black,
+          borderRadius: BorderRadius.circular(100),
+          padding: const EdgeInsets.all(16.0),
+          onPressed: onPressed,
+          child: (controller.result == '0')
+              ? ButtonIconType.allClear
+              : ButtonIconType.clear,
+        ),
       ),
+    );
+  }
+
+  Widget _btnETC(Icon icon) {
+    return BasicButton(
+      type: Type.ROUND,
+      color: ButtonColor.grey,
+      child: icon,
     );
   }
 }
