@@ -46,16 +46,15 @@ class BlackButton extends StatelessWidget {
       case BlackBtnType.ZERO:
         return _zeroBtn('0');
       case BlackBtnType.DOT:
-        return _zeroBtn('.');
+        return _numberBtn('.');
     }
   }
 
   Widget _numberBtn(String number) {
     return BasicButton(
       color: ButtonColor.black,
-      type: Type.ROUND,
+      onPressed: onPressed,
       child: _numberText(number),
-      onPressed: () {},
     );
   }
 
@@ -63,7 +62,7 @@ class BlackButton extends StatelessWidget {
     return Text(
       number,
       style: const TextStyle(
-        fontSize: 25,
+        fontSize: 35,
         color: CupertinoColors.white,
       ),
     );
@@ -73,8 +72,8 @@ class BlackButton extends StatelessWidget {
     return BasicButton(
       color: ButtonColor.black,
       type: Type.FLAT,
+      onPressed: onPressed,
       child: _numberText(number),
-      onPressed: () {},
     );
   }
 }

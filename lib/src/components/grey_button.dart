@@ -12,12 +12,8 @@ enum GreyBtnType { ALLCLEAR, PLUSNMINUS, PERCENT }
 class GreyButton extends GetView<CalculatorController> {
   final GreyBtnType type;
   final Function() onPressed;
-  final Widget child;
-  const GreyButton(
-      {super.key,
-      required this.onPressed,
-      required this.child,
-      required this.type});
+  const GreyButton({Key? key, required this.onPressed, required this.type})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +33,9 @@ class GreyButton extends GetView<CalculatorController> {
       height: ButtonSize.short,
       child: Obx(
         () => CupertinoButton(
-          color: ButtonColor.black,
+          color: ButtonColor.grey,
+          padding: const EdgeInsets.all(8.0),
           borderRadius: BorderRadius.circular(100),
-          padding: const EdgeInsets.all(16.0),
           onPressed: onPressed,
           child: (controller.result == '0')
               ? ButtonIconType.allClear
@@ -53,6 +49,7 @@ class GreyButton extends GetView<CalculatorController> {
     return BasicButton(
       type: Type.ROUND,
       color: ButtonColor.grey,
+      onPressed: onPressed,
       child: icon,
     );
   }

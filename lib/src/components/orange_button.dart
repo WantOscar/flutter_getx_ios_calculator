@@ -43,13 +43,17 @@ class OrangeButton extends StatelessWidget {
     return AnimatedOpacity(
       opacity: (isClicked) ? 0.0 : 1.0,
       duration: const Duration(milliseconds: 300),
-      child: CupertinoButton(
-        pressedOpacity: null,
-        color: ButtonColor.orange,
-        padding: const EdgeInsets.all(16.0),
-        borderRadius: BorderRadius.circular(100),
-        onPressed: onPressed,
-        child: iconFront,
+      child: SizedBox(
+        width: ButtonSize.short,
+        height: ButtonSize.short,
+        child: CupertinoButton(
+          pressedOpacity: null,
+          color: ButtonColor.orange,
+          padding: const EdgeInsets.all(8.0),
+          borderRadius: BorderRadius.circular(100),
+          onPressed: onPressed,
+          child: iconFront,
+        ),
       ),
     );
   }
